@@ -31,17 +31,4 @@ def deleteView(request):
     e.delete()
     return redirect('/')
 
-@login_required
-def changePassword(request):
-    new_pswd = ''
-    new_pswd = request.POST.get('pswd','').strip()
-    conn = sqlite3.connect('mysite/db.sqlite3')
-    cursor = conn.cursor()
-    # call = "update auth_user set password = '%s' where id = %d" % (
-#	new_pswd, request.user.id)
- #   cursor.execute(call)
-  #  conn.commit()
-    user = request.user
-    user.set_password(new_pswd)
-    user.save()    
-    return redirect('/')
+
