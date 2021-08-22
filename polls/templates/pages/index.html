@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Calendar</title>
+    </head>
+
+
+    <body>
+		<h1>Calendar</h1>
+	<table>
+		<tr>
+		<th style="text-align:left">{{user.username}}'s calendar <td> <tr>
+<table>
+		
+        <form action='events/{{user.id}}' method="POST">
+			{% csrf_token %}
+            <input type="submit" value="Show events"/>
+        </form>
+
+		</table>
+
+	<tr>
+	
+	
+	<p>Date/Time: <span id="datetime"></span></p>
+	
+	<script>
+	var dt = new Date();
+	document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+	</script>
+	
+        <form action='logout/' method="POST">
+			{% csrf_token %}
+            <input type="submit" value="Logout"/>
+        </form>
+	</table>	
+        
+
+        
+
+        <h2>New event</h2>
+
+        <form action='add/' method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<input type="date" name="date" id="date"/>
+			<input type="text" name="event" id="event"/>
+            <input type="submit" value="Add"/>
+        </form>
+
+    </body>
+
+</html>
